@@ -27,11 +27,22 @@ function Todo() {
     /* テストコード 終了 */
   ]);
 
+  const addTodo = todo => {
+    if(!todo.text) {
+      return
+    }
+
+    const newTodos = [todo, ...items]
+
+    putItems(newTodos)
+  }
+
   return (
     <div className="panel">
       <div className="panel-heading">
         ITSS ToDoアプリ
       </div>
+      <Input onSubmit={addTodo}/>
       {items.map(item => (
         <TodoItem key={item.key} item={item} />
       ))}
